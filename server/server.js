@@ -3,7 +3,11 @@ const fastify = require('fastify')();
 const routes = require('./routes');
 const path = require('path');
 const {parsed : {MONGO_ATLAS_PW}} = require('dotenv').config();
+const DistPath = path.join(__dirname, '..', 'dist');
 
+fastify.register(require('fastify-static'), {
+    root: DistPath,
+});
 //connect to mongodb atlas
 mongoose.connect(`mongodb://127.0.0.1:27017/menuItemApp`, { useFindAndModify: false, useNewUrlParser: true })
     .then(() => console.log('MongoDB connected'))
@@ -12,7 +16,7 @@ mongoose.connect(`mongodb://127.0.0.1:27017/menuItemApp`, { useFindAndModify: fa
 //handles GET / request
 fastify.get('/', async (request, reply) => {
     try {
-        return {message : "hello, world!"}
+        reply.sendFile('index.html');
     }
     catch (e) { console.log(e) }
 });

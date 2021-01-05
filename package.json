@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/JaxAdam/mfrn-learn#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.1.0",
     "fastify": "^2.8.0",
     "fastify-static": "^2.5.0",
